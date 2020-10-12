@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: denimallel/prod-cons-api:4
+        image: denimallel/prod-cons-api:{{version}}
         livenessProbe:
           httpGet:
             path: /actuator/health/liveness
