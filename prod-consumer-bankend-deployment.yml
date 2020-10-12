@@ -13,10 +13,12 @@ spec:
     spec:
       containers:
       - name: server
-        image: denimallel/prod-cons-api:latest
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        image: denimallel/prod-cons-api:4
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8091
+          initialDelaySeconds: 10
+          periodSeconds: 5
         ports:
         - containerPort: 8090
